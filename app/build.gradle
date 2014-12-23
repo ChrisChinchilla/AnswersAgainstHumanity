@@ -1,11 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'AndroidKey'
+            keyPassword 'XwOO1zUztu3M'
+            storeFile file('/Users/chrisward/Workspace/android.jks')
+            storePassword 'XwOO1zUztu3M'
+        }
+    }
     compileSdkVersion 19
     buildToolsVersion "19.1"
-
     defaultConfig {
-        applicationId "aah.gregariousmammal.com.answersagainsthumanity"
+        applicationId "gregariousmammal.com.answersagainsthumanity"
         minSdkVersion 14
         targetSdkVersion 19
         versionCode 1
@@ -13,8 +20,9 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.config
         }
     }
 }
